@@ -1,5 +1,0 @@
-ver 1.0.1
-2012-10-02 fixed download error
-
-ver 1.0.2
-2012-10-13 fixed for firefox download
