@@ -22,7 +22,7 @@ CAUTION: The files uploaded with this plugin will be downloaded via 'download.ph
 
 == Installation ==
 
-1. Upload the 'non-latin-filename' folder to the '/wp-content/plugins/' directory.
+1. Upload the 'uploadingdownloading-non-latin-filename' folder to the '/wp-content/plugins/' directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Screenshots ==
