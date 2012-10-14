@@ -4,7 +4,7 @@ Plugin Name: uploading downloading non-latin filename
 Description: WordPress cannot attach files with non-latin file name (e.g., Korean). This is the one major drawback to popularization of WordPress among non-english users. This plugin will rename the file (with latin or non-latin names) to numbers, stores the original file name as a title of media post, and upload the file to the server. When a user attempts to download the file, the file will be returned with corresponding media post's title. But image files will not be processed as such: image files will be returned with numbered name. Because, src value of shoud be real filename on server. 
 Author: Ahn, Hyoung-woo
 Author URI: http://mytory.co.kr
-Version: 1.0.3
+Version: 1.0.4
 License: GPL2 (http://www.gnu.org/licenses/gpl-2.0.html)
 */
 
@@ -87,6 +87,6 @@ function nlf_add_plugins_url_var(){
 add_filter('wp_handle_upload_prefilter', 'nlf_prefilter');
 add_action('add_attachment', 'nlf_add_attachment');
 add_filter('wp_get_attachment_url', 'nlf_wp_get_attachment_url', '', 2);
-wp_enqueue_script('nlf', plugins_url('uploadingdownloading-non-latin-filename/a.js'), array('jquery'), '1.0.3', 1);
+wp_enqueue_script('nlf', plugins_url('uploadingdownloading-non-latin-filename/a.js'), array('jquery'), '1.0.4', 1);
 add_action('wp_head','nlf_add_plugins_url_var');
 ?>
