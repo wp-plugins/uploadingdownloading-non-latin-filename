@@ -27,9 +27,9 @@ CAUTION: The files uploaded with this plugin will be downloaded via 'download.ph
 
 == Screenshots ==
 
-* http://dl.dropbox.com/u/15546257/wordpress-plugin/non-latin-filename/screenshot1.png
-* http://dl.dropbox.com/u/15546257/wordpress-plugin/non-latin-filename/screenshot2.png
-* http://dl.dropbox.com/u/15546257/wordpress-plugin/non-latin-filename/screenshot3.png
+1. Korean filename downloaing on Firefox.
+1. Korean filename downloaing on IE.
+1. Korean filename downloaing on Chrome.
 
 == Changelog ==
 
