@@ -71,7 +71,7 @@ function nlf_wp_get_attachment_url($url, $post_id){
 		}
 	}
 	
-	$url = site_url('wp-content/plugins/non-latin-filename/download.php?id=' . $post_id);
+	$url = site_url('wp-content/plugins/uploadingdonwloading-non-latin-filename/download.php?id=' . $post_id);
 	return $url;
 }
 
@@ -87,6 +87,6 @@ function nlf_add_plugins_url_var(){
 add_filter('wp_handle_upload_prefilter', 'nlf_prefilter');
 add_action('add_attachment', 'nlf_add_attachment');
 add_filter('wp_get_attachment_url', 'nlf_wp_get_attachment_url', '', 2);
-wp_enqueue_script('nlf', plugins_url('non-latin-filename/a.js'), array('jquery'), '1.0.0', 1);
+wp_enqueue_script('nlf', plugins_url('uploadingdonwloading-non-latin-filename/a.js'), array('jquery'), '1.0.3', 1);
 add_action('wp_head','nlf_add_plugins_url_var');
 ?>
