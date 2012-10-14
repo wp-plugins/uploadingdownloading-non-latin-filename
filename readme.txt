@@ -4,7 +4,7 @@ Donate link: http://mytory.co.kr/paypal-donation
 Tags: uploading downloading non-latin filename
 Requires at least: 2.9
 Tested up to: 3.4.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,9 @@ CAUTION: The files uploaded with this plugin will be downloaded via 'download.ph
 1. Korean filename downloaing on Chrome.
 
 == Changelog ==
+
+= 1.0.4 =
+Finally fixed the errors caused by the foldername.
 
 = 1.0.3 =
 Fixed download error. Because plusgin foldername. 
