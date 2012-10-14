@@ -4,7 +4,7 @@ Donate link: http://mytory.co.kr/paypal-donation
 Tags: uploading downloading non-latin filename
 Requires at least: 2.9
 Tested up to: 3.4.2
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,16 +22,19 @@ CAUTION: The files uploaded with this plugin will be downloaded via 'download.ph
 
 == Installation ==
 
-1. Upload the 'non-latin-filename' folder to the '/wp-content/plugins/' directory.
+1. Upload the 'uploadingdownloading-non-latin-filename' folder to the '/wp-content/plugins/' directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Screenshots ==
 
-* http://dl.dropbox.com/u/15546257/wordpress-plugin/non-latin-filename/screenshot1.png
-* http://dl.dropbox.com/u/15546257/wordpress-plugin/non-latin-filename/screenshot2.png
-* http://dl.dropbox.com/u/15546257/wordpress-plugin/non-latin-filename/screenshot3.png
+1. Korean filename downloaing on Firefox.
+1. Korean filename downloaing on IE.
+1. Korean filename downloaing on Chrome.
 
 == Changelog ==
+
+= 1.0.3 =
+Fixed download error. Because plusgin foldername. 
 
 = 1.0.2 =
 fixed for firefox download
