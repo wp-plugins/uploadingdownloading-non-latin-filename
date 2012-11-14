@@ -10,7 +10,7 @@ $upload_dir = wp_upload_dir();
 $original_filepath = $upload_dir['basedir'] . '/' . $attachment_meta['_wp_attached_file'][0];
 
 header('Content-type: '.$attachment->post_mime_type);
-if( strstr($_SERVER['HTTP_USER_AGENT'],'Firefox') ){
+if( strstr($_SERVER['HTTP_USER_AGENT'],'Firefox') OR strstr($_SERVER['HTTP_USER_AGENT'],'iPhone')){
 	$filename_encoded = $filename_for_download;
 }else{
 	$filename_encoded = urlencode($filename_for_download);
