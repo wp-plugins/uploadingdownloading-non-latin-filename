@@ -35,11 +35,14 @@ CAUTION: The files uploaded with this plugin will be downloaded via 'download.ph
 
 == Screenshots ==
 
-1. Korean filename downloaing on Firefox.
-1. Korean filename downloaing on IE.
-1. Korean filename downloaing on Chrome.
+1. Non-latin(Korean) filename downloaing on Firefox.
+1. Non-latin(Korean) filename downloaing on IE.
+1. Non-latin(Korean) filename downloaing on Chrome.
 
 == Changelog ==
+
+= 1.0.8 =
+Using WP ajax method.
 
 = 1.0.7 =
 correct filename on iPhone.

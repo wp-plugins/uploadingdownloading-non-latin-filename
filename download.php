@@ -1,6 +1,6 @@
 <?php
 include '../../../wp-blog-header.php';
-include 'functions.php';
+include 'non-latin.php';
 $filename_for_download = nlf_get_filename_for_download($_GET['id']);
 
 $attachment = get_post($_GET['id']);

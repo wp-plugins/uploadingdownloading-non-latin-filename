@@ -4,7 +4,7 @@ Plugin Name: uploading downloading non-latin filename
 Description: WordPress cannot attach files with non-latin file name (e.g., Korean). This is the one major drawback to popularization of WordPress among non-english users. This plugin will rename the file (with latin or non-latin names) to numbers, stores the original file name as a title of media post, and upload the file to the server. When a user attempts to download the file, the file will be returned with corresponding media post's title. But image files will not be processed as such: image files will be returned with numbered name. Because, src value of shoud be real filename on server. 
 Author: Ahn, Hyoung-woo
 Author URI: http://mytory.co.kr
-Version: 1.0.7
+Version: 1.0.8
 License: GPL2 (http://www.gnu.org/licenses/gpl-2.0.html)
 */
 
@@ -53,7 +53,8 @@ function nlf_add_attachment($attachment){
 
 /**
  * Set file download url from download.php script url that plugin has.
- * 파일 다운로드 url을 파일의 url을 직접 거는 대신에 플러그인이 만든 download 스크립트의 url로 바꿔 준다. 그렇게 함으로써 다운받을 때 첨부파일 포스트의 타이틀로 파일명을 대체해 준다.
+ * 파일 다운로드 url을 파일의 url을 직접 거는 대신에 플러그인이 만든 download 스크립트의 url로 바꿔 준다. 
+ * 그렇게 함으로써 다운받을 때 첨부파일 포스트의 타이틀로 파일명을 대체해 준다.
  * @param string $url
  * @param int $post_id
  */
@@ -75,22 +76,48 @@ function nlf_wp_get_attachment_url($url, $post_id){
 	return $url;
 }
 
-/**
- * Set plugin url javascript variable for GD bbpress attachment.
- * GD bbpress attachment에서 사용하기 위해 플러그인 url을 자바스크립트 변수로 세팅한다.
- */
-function nlf_add_plugins_url_var(){
-	$plugins_url = plugins_url();
-	echo "<script type='text/javascript'>var plugins_url = '{$plugins_url}';</script>";
-}
-
-function nlf_enqueue_script() {
-	wp_enqueue_script('nlf', plugins_url('uploadingdownloading-non-latin-filename/a.js'), array('jquery'), '1.0.7', 1);
-}    
-
 add_filter('wp_handle_upload_prefilter', 'nlf_prefilter');
 add_action('add_attachment', 'nlf_add_attachment');
 add_filter('wp_get_attachment_url', 'nlf_wp_get_attachment_url', '', 2);
-add_action('wp_head','nlf_add_plugins_url_var');
+
+/**
+ * ========================= for GD bbPress Attachment =================================
+ */
+
+function nlf_enqueue_script() {
+	wp_enqueue_script('nlf_gd_bbpress_attachment', plugins_url('uploadingdownloading-non-latin-filename/a.js'), array('jquery'), '1.0.8', 1);
+	wp_localize_script( 'nlf_gd_bbpress_attachment', 'nlf', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
+}
+
+/**
+ * Get filename from attachment title.
+ * 첨부파일 post_title을 기반으로 다운로드용 파일명을 만든다.
+ * @param int $attchment_id
+ */
+function nlf_get_filename_for_download($attchment_id){
+	$attachment = get_post($attchment_id);
+	$file = get_attached_file($attchment_id);
+	$extension = pathinfo($file, PATHINFO_EXTENSION);
+	$post_title_extenstion = pathinfo($attachment->post_title, PATHINFO_EXTENSION);
+	if($extension != $post_title_extenstion){
+		$filename_for_download = sanitize_file_name($attachment->post_title) . '.' . $extension;
+	}else{
+		$filename_for_download = sanitize_file_name($attachment->post_title);
+	}
+	return $filename_for_download;
+}
+
+/**
+ * Print filename for download that made from attachment title.
+ * 첨부파일 post_title을 기반으로 다운로드용 파일명을 만들어 출력한다.
+ */
+function nlf_print_filename_for_download(){
+	echo nlf_get_filename_for_download($_GET['id']);
+}
+
+add_action("wp_ajax_filename_for_download", "nlf_print_filename_for_download");
+add_action("wp_ajax_nopriv_filename_for_download", "nlf_print_filename_for_download");
 add_action('wp_enqueue_scripts', 'nlf_enqueue_script');
-?>
+
+
+//end of non-latin.php
