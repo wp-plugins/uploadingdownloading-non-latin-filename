@@ -85,7 +85,7 @@ add_filter('wp_get_attachment_url', 'nlf_wp_get_attachment_url', '', 2);
  */
 
 function nlf_enqueue_script() {
-	wp_enqueue_script('nlf_gd_bbpress_attachment', plugins_url('uploadingdownloading-non-latin-filename/a.js'), array('jquery'), '1.0.8', 1);
+	wp_enqueue_script('nlf_gd_bbpress_attachment', plugins_url('uploadingdownloading-non-latin-filename/non-latin.js'), array('jquery'), '1.0.8', 1);
 	wp_localize_script( 'nlf_gd_bbpress_attachment', 'nlf', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
 }
 
@@ -113,6 +113,7 @@ function nlf_get_filename_for_download($attchment_id){
  */
 function nlf_print_filename_for_download(){
 	echo nlf_get_filename_for_download($_GET['id']);
+	die();
 }
 
 add_action("wp_ajax_filename_for_download", "nlf_print_filename_for_download");
