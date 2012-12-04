@@ -3,7 +3,7 @@ Contributors: mytory
 Donate link: http://mytory.co.kr/paypal-donation
 Tags: uploading downloading non-latin filename
 Requires at least: 2.9
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
