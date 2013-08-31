@@ -4,7 +4,7 @@ Plugin Name: uploading downloading non-latin filename
 Description: You can upload files has non-latin filename and download original filename. 이 플러그인을 사용하면 파일명이 한글인 파일을 올릴 수 있고, 다운받을 때는 원래 파일명으로 다운받을 수 있다.
 Author: Ahn, Hyoung-woo
 Author URI: http://mytory.co.kr
-Version: 1.1.1
+Version: 1.1.2
 License: GPL2 (http://www.gnu.org/licenses/gpl-2.0.html)
 */
 
@@ -143,12 +143,20 @@ function nlf_get_download_url(){
 	global $wpdb;
 	$result = array();
 	foreach ($_REQUEST['attachments'] as $guid) {
-		$post = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE guid = '{$guid}' AND post_type = 'attachment'");
-		if($post){
-			$result[] = array(
-				'guid' => $guid,
-				'download_url' => plugin_dir_url(__FILE__) . 'download.php?id=' . $post->ID
-			);	
+		$filename = pathinfo($guid, PATHINFO_BASENAME);
+		$filetype = wp_check_filetype($filename);
+
+		// If link is image, no change url.
+		if( ! strstr($filetype['type'], 'image') ){
+			$post = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE guid = '{$guid}' AND post_type = 'attachment'");
+
+			// If there is post.
+			if($post){
+				$result[] = array(
+					'guid' => $guid,
+					'download_url' => plugin_dir_url(__FILE__) . 'download.php?id=' . $post->ID
+				);	
+			}
 		}
 	}
 	echo json_encode($result);
